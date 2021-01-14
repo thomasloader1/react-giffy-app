@@ -1,0 +1,10 @@
+.gif_img {
+  border-radius: 2.7rem;
+}
+
+.gif_box {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
