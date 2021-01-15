@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 export default function SearchInput() {
   const [keyword, setKeyword] = useState("");
+  const [location, setLocation] = useLocation();
+
   const onSubmitSearch = (e) => {
     e.preventDefault();
-    setKeyword(e.target[0].value);
+    setLocation(`/gif/${keyword}`);
+  };
+  const onChangeInput = (evnt) => {
+    setKeyword(evnt.target.value);
   };
   return (
     <form onSubmit={onSubmitSearch}>
@@ -15,9 +20,7 @@ export default function SearchInput() {
           type="text"
           className="form-control"
           placeholder="Introduce una palabra para ver Gif's!"
-          onBlur={(evnt) => {
-            setKeyword(evnt.target.value);
-          }}
+          onChange={onChangeInput}
         />
         <Link to={`/gif/${keyword}`}>
           <a className="btn btn-success">
